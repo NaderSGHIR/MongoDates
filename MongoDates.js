@@ -1,4 +1,4 @@
-var _ = require('underscore');
+var _ = require('lodash');
 
 var MongoDates = function(input) {
   if (!(this instanceof MongoDates)) {
