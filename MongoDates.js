@@ -99,6 +99,7 @@ MongoDates.prototype.getDateFromDateTime = function(strDateTime) {
   }
   return year + '-' + month + '-' + dt;
 };
+
 MongoDates.prototype.datesToStrings = function(obj) {
   var paths = this.getDatePaths();
   var that = this;
@@ -134,7 +135,44 @@ MongoDates.prototype.datesToStrings = function(obj) {
   return obj;
 };
 
+MongoDates.prototype.stringsToDates = function(obj) {
+  var paths = this.getDatePaths();
+  var that = this;
+  var errs = [];
+  paths.datetimes.forEach(function(path) {
+    if (path)
+      obj = that.pathApply(obj, path, function(item) {
+        if ((new Date(item)).toString() === "Invalid Date") {
+          var message = "Incorrect date format - got " + item.toString();
+          errs.push(new Error(message));
+        }
+        return {
+          "$date": (new Date(item)).valueOf()
+        };
+      });
+  });
 
+  paths.dates.forEach(function(path) {
+    if (path)
+      obj = that.pathApply(obj, path, function(item) {
+        if ((new Date(item)).toString() === "Invalid Date") {
+          var message = "Incorrect date format - got " + item.toString();
+          errs.push(new Error(message));
+        }
+
+        return {
+          "$date": (new Date(item)).valueOf()
+        };
+      });
+  });
+  if (errs.length) {
+    var err = new Error("Date validation error.  Check this.errors for path. In schema " + (this.name || ""));
+    err.errors = errs;
+    err.name = "DateValidationError";
+    throw err;
+  }
+  return obj;
+};
 
 var isSet = function(obj) {
   return ((obj !== null) && (obj !== undefined));

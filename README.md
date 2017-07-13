@@ -52,7 +52,8 @@ Final result after conversion:
 ```
 (I am using this format because I am using RestHeart)
 
-## Example
+## Example1: from restheart/mongodb date format to String
+
 ```javascript
 var MongoDates = require("./MongoDates.js");
 // define the JSON schema
@@ -96,5 +97,65 @@ var result = mongoDates.datesToStrings({
   });
 
  console.log(result); 
+ /*
+ {
+  "firstName": "Jhon",
+  "lastName": "Toto",
+  "birthDate": "2006-10-02",
+  "createDate": "2017-05-01T14:53:09.000Z"
+}*/
  ```
-And in case of date-time format do same thing. This formating must be generic and valid for nested objects also.
+ 
+ ## Example1: from restheart/mongodb date format to String
+
+```javascript
+var MongoDates = require("./MongoDates.js");
+// define the JSON schema
+var mongoDates = MongoDates({
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "birthDate": {
+      "id": "/properties/birthDate",
+      "type": "string",
+      "format": "date"
+    },
+    "createDate": {
+      "id": "/properties/createDate",
+      "type": "string",
+      "format": "date-time"
+    },
+    "firstName": {
+      "id": "/properties/firstName",
+      "type": "string"
+    },
+    "lastName": {
+      "id": "/properties/lastName",
+      "type": "string"
+    }
+  },
+  "type": "object"
+});
+
+// format the json object
+var result = mongoDates.datesToStrings({
+  "firstName": "Jhon",
+  "lastName": "Toto",
+  "birthDate": "2006-10-02",
+  "createDate": "2017-05-01T14:53:09.000Z"
+});
+
+ console.log(result); 
+ /*
+ {
+  "firstName": "Jhon",
+  "lastName": "Toto",
+  "birthDate": {
+    "$date": 1159747200000
+  },
+  "createDate": {
+    "$date": 1493650389000
+  }
+}*/
+ ```
