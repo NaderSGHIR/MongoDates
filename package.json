@@ -1,6 +1,6 @@
 {
   "name": "mongodates",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Formatting json date valuee depending schema",
   "main": "index.js",
   "dependencies": {
@@ -21,7 +21,7 @@
     "mongo",
     "date",
     "date-time",
-	"Crestheart"
+	"restheart"
   ],
   "author": "Nader Sghir",
   "license": "ISC",

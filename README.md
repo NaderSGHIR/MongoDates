@@ -46,7 +46,7 @@ Final result after conversion:
 {
   "firstName": "Jhon",
   "lastName": "Toto",
-  "birthDate": "2006-10-02",
+  "birthDate": "2006-10-03",
   "createDate": "2017-05-01T14:53:09.000Z"
 }
 ```
@@ -106,7 +106,7 @@ var result = mongoDates.datesToStrings({
 }*/
  ```
  
- ## Example1: from restheart/mongodb date format to String
+ ## Example1: from date/date-tome String to format to restheart/mongodb date
 
 ```javascript
 var MongoDates = require("./MongoDates.js");
