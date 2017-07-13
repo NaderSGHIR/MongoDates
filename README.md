@@ -1,6 +1,6 @@
 # MongoDates
 a simple way to vor a value of JSON field depending on format on its JSON Schema (specially date / datetime format for mongodb)? Examples: JSON:
-```
+```javascript
 {
   "firstName": "Jhon",
   "lastName": "Toto",
@@ -13,7 +13,7 @@ a simple way to vor a value of JSON field depending on format on its JSON Schema
 }
 ```
 Schema:
-```
+```javascript
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "definitions": {},
@@ -42,7 +42,7 @@ Schema:
 }
 ```
 Final result after conversion:
-```
+```javascript
 {
   "firstName": "Jhon",
   "lastName": "Toto",
@@ -53,7 +53,7 @@ Final result after conversion:
 (I am using this format because I am using RestHeart)
 
 ## Example
-```
+```javascript
 var MongoDates = require("./MongoDates.js");
 // define the JSON schema
 var mongoDates = MongoDates({
