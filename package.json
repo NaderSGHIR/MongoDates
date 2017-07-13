@@ -1,7 +1,7 @@
 {
   "name": "mongodates",
   "version": "1.0.0",
-  "description": "Formatting json date valuee depending schema\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C on schema",
+  "description": "Formatting json date valuee depending schema",
   "main": "index.js",
   "dependencies": {
     "lodash": "^4.17.4"
