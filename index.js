@@ -107,7 +107,7 @@ MongoDates.prototype.datesToStrings = function(obj) {
   var paths = this.getDatePaths();
   var that = this;
   var errs = [];
-  paths.datetimes.forEach(function(path.datetimes) {
+  paths.datetimes.forEach(function(path) {
     if (path)
       obj = that.pathApply(obj, path, function(item) {
         if ((new Date(item.$date)).toString() === "Invalid Date") {
@@ -118,7 +118,7 @@ MongoDates.prototype.datesToStrings = function(obj) {
       });
   });
 
-  paths.dates.forEach(function(path.dates) {
+  paths.dates.forEach(function(path) {
     if (path)
       obj = that.pathApply(obj, path, function(item) {
         if ((new Date(item.$date)).toString() === "Invalid Date") {
@@ -142,7 +142,7 @@ MongoDates.prototype.stringsToDates = function(obj) {
   var paths = this.getDatePaths();
   var that = this;
   var errs = [];
-  paths.datetimes.forEach(function(path.datetimes) {
+  paths.datetimes.forEach(function(path) {
     if (path)
       obj = that.pathApply(obj, path, function(item) {
         if ((new Date(item)).toString() === "Invalid Date") {
@@ -155,7 +155,7 @@ MongoDates.prototype.stringsToDates = function(obj) {
       });
   });
 
-  paths.dates.forEach(function(path.dates) {
+  paths.dates.forEach(function(path) {
     if (path)
       obj = that.pathApply(obj, path, function(item) {
         if ((new Date(item)).toString() === "Invalid Date") {
