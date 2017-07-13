@@ -8,6 +8,9 @@ var MongoDates = function(input) {
   this._schema = input;
 
 };
+var clone = function(obj) {
+  return JSON.parse(JSON.stringify(obj));
+};
 
 MongoDates.prototype.getDatePaths = function(prefix, schema) {
   if (!prefix) {
