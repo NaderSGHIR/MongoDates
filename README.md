@@ -1,5 +1,9 @@
 # MongoDates
-a simple way to vor a value of JSON field depending on format on its JSON Schema (specially date / datetime format for mongodb)? Examples: JSON:
+A simple way to format a date / date-time value of JSON field depending on format on its JSON Schema.
+
+Example: 
+
+JSON:
 ```javascript
 {
   "firstName": "Jhon",
@@ -106,7 +110,7 @@ var result = mongoDates.datesToStrings({
 }*/
  ```
  
- ## Example1: from date/date-tome String to format to restheart/mongodb date
+ ## Example2: from date/date-time String to format to restheart/mongodb date
 
 ```javascript
 var MongoDates = require("./MongoDates.js");

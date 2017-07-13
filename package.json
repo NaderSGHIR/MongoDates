@@ -1,7 +1,7 @@
 {
   "name": "mongodates",
-  "version": "1.0.3",
-  "description": "Formatting json date valuee depending schema",
+  "version": "1.0.4",
+  "description": "Formatting json date value depending schema",
   "main": "index.js",
   "dependencies": {
     "lodash": "^4.17.4"
