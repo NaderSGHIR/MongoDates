@@ -2,9 +2,15 @@
 a simple way to vor a value of JSON field depending on format on its JSON Schema (specially date / datetime format for mongodb)? Examples: JSON:
 ```
 {
-  "firstName": "Alex",
-  "lastName": "Alex",
-  "birthDate": "1996-06-20"
+  "firstName": "Jhon",
+  "lastName": "Toto",
+  "birthDate": {
+      "$date": 1159747200000
+    },
+    "createDate": {
+      "$date": 1493650389000
+    }
+}
 ```
 Schema:
 ```
@@ -17,6 +23,11 @@ Schema:
             "id": "/properties/birthDate",
             "type": "string",
               "format":"date"
+        },
+         "createDate": {
+            "id": "/properties/createDate",
+            "type": "string",
+              "format":"date-time"
         },
         "firstName": {
             "id": "/properties/firstName",
@@ -33,13 +44,57 @@ Schema:
 Final result after conversion:
 ```
 {
-  "firstName": "Alex",
-  "lastName": "Alex",
-  "birthDate": {
-    $date": 835228800000
-  }
+  "firstName": "Jhon",
+  "lastName": "Toto",
+  "birthDate": "2006-10-02",
+  "createDate": "2017-05-01T14:53:09.000Z"
 }
 ```
 (I am using this format because I am using RestHeart)
 
-And in case of datetime do same thing. This formating must be generic and valid for nested objects also.
+## Example
+```
+var MongoDates = require("./MongoDates.js");
+// define the JSON schema
+var mongoDates = MongoDates({
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "birthDate": {
+      "id": "/properties/birthDate",
+      "type": "string",
+      "format": "date"
+    },
+    "createDate": {
+      "id": "/properties/createDate",
+      "type": "string",
+      "format": "date-time"
+    },
+    "firstName": {
+      "id": "/properties/firstName",
+      "type": "string"
+    },
+    "lastName": {
+      "id": "/properties/lastName",
+      "type": "string"
+    }
+  },
+  "type": "object"
+});
+
+// format the json object
+var result = mongoDates.datesToStrings({
+    "firstName": "Jhon",
+    "lastName": "Toto",
+    "birthDate": {
+      "$date": 1159747200000
+    },
+    "createDate": {
+      "$date": 1493650389000
+    }
+  });
+
+ console.log(result); 
+ ```
+And in case of date-time format do same thing. This formating must be generic and valid for nested objects also.
