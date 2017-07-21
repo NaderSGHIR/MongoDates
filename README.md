@@ -143,7 +143,7 @@ var mongoDates = MongoDates({
 });
 
 // format the json object
-var result = mongoDates.datesToStrings({
+var result = mongoDates.stringsToDates({
   "firstName": "Jhon",
   "lastName": "Toto",
   "birthDate": "2006-10-02",
