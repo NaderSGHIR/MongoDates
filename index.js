@@ -94,7 +94,7 @@ MongoDates.prototype.getDateFromDateTime = function (strDateTime) {
 	var date = new Date(strDateTime);
 	var year = date.getFullYear();
 	var month = date.getMonth() + 1;
-	var dt = date.getDate();
+	var dt = date.getUTCDate();
 
 	if (dt < 10) {
 		dt = '0' + dt;
