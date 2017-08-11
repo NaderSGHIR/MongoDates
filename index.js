@@ -23,7 +23,7 @@ mongodates.prototype.getDateProperties = function(prefix, schema) {
     properties.push(path[2]);
   });
 
-  return paths;
+  return properties;
 }
 
 mongodates.prototype.getDatePaths = function(prefix, schema) {
