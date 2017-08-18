@@ -126,10 +126,13 @@ mongodates.prototype.datesToStrings = function(obj) {
   paths.datetimes.forEach(function(path) {
     if (path)
       obj = that.pathApply(obj, path, function(item) {
+        if(!item.$date && (new Date(item)).toString() != "Invalid Date")
+            return item;
         if ((new Date(item.$date)).toString() === "Invalid Date") {
           var message = "Incorrect date format - got " + item.toString();
           errs.push(new Error(message));
         }
+        
         return (new Date(item.$date)).toISOString();
       });
   });
@@ -137,11 +140,13 @@ mongodates.prototype.datesToStrings = function(obj) {
   paths.dates.forEach(function(path) {
     if (path)
       obj = that.pathApply(obj, path, function(item) {
+        if(!item.$date && (new Date(item)).toString() != "Invalid Date")
+            return item;
         if ((new Date(item.$date)).toString() === "Invalid Date") {
           var message = "Incorrect date format - got " + item.toString();
           errs.push(new Error(message));
         }
-
+        
         return that.getDateFromDateTime((new Date(item.$date)).toISOString());
       });
   });
